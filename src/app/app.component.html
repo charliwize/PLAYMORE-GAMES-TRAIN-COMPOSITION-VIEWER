@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="panel panel-primary item">
+    <div class="panel-heading"><h3>Train Composition Viewer</h3></div>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let trainNumber of trainNumbers">
+        <div class="item train-info" (click)="trainCompositions(trainNumber.trainNumber, trainNumber.departureDate)">
+        <!-- trainType + trainNumber    beginStation - endStation -->
+          <div>Type: {{trainNumber.trainType}}</div>
+          <div>Number: {{trainNumber.trainNumber}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <train-composition *ngIf="compositionObj !== undefined" [columns]="compositionObj"></train-composition>
+</div>

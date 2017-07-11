@@ -1,0 +1,62 @@
+<div *ngIf="columns.journeySections == undefined">
+    <div class="alert alert-danger">
+        No info!
+    </div>
+</div>
+<div *ngIf="columns.journeySections !== undefined">
+    <div *ngFor="let journeySection of columns.journeySections">
+        <div class="row">
+            <div *ngFor="let journeySection of columns.journeySections">
+                <div class="col-md-6">
+                    <div class="alert alert-warning">
+                        <div>Departure Time: {{journeySection.beginTimeTableRow.scheduledTime}}</div>
+                        <div>Transit Type: {{journeySection.beginTimeTableRow.type}}</div>
+                        <div>Station UIC Code: {{journeySection.beginTimeTableRow.stationUICCode}}</div>
+                        <div>Station ShortCode: {{journeySection.beginTimeTableRow.stationShortCode}}</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-success">
+                        <div>Departure Time: {{journeySection.endTimeTableRow.scheduledTime}}</div>
+                        <div>Transit Type: {{journeySection.endTimeTableRow.type}}</div>
+                        <div>Station UIC Code: {{journeySection.endTimeTableRow.stationUICCode}}</div>
+                        <div>Station ShortCode: {{journeySection.endTimeTableRow.stationShortCode}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let wagon of journeySection.wagons">
+                        <span *ngIf='wagon.disabled'><strong>disabled :</strong> {{wagon.disabled}},</span>
+                        <span *ngIf='wagon.length'><strong>Length : </strong>{{wagon.length}},</span>
+                        <span *ngIf='wagon.location'><strong>Location :</strong> {{wagon.location}},</span>
+                        <span *ngIf='wagon.playground'><strong>Playground : </strong>{{wagon.playground}},</span>
+                        <span *ngIf='wagon.salesNumber'><strong>Sales Number :</strong> {{wagon.salesNumber}},</span>
+                        <span *ngIf='wagon.video'><strong>Video :</strong> {{wagon.video}},</span>
+                        <span *ngIf='wagon.wagonType'><strong>Wagon Type :</strong> {{wagon.wagonType}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <a class="list-group-item list-group-item-action flex-column align-items-start active">
+                        locomotives
+                    </a>
+                    <li class="list-group-item" *ngFor="let locomotive of journeySection.locomotives">
+                        <span><strong>location:</strong> {{locomotive.location}},</span>
+                        <span><strong>Locomotive Type:</strong> {{locomotive.locomotiveType}},</span>
+                        <span><strong>Power Type:</strong> {{locomotive.powerType}},</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                The maximum speed and total length for this train is {{journeySection.maximumSpeed}} and {{journeySection.totalLength}} respectively
+            </div>
+        </div>
+    </div>
+</div>
+
