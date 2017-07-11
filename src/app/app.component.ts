@@ -15,16 +15,14 @@ export class AppComponent  implements OnInit {
   constructor (private httpService: HTTPGetService){}
   ngOnInit() {
     this.httpService.getTrainNumber()
-    //.subscribe((response)=> this.trainNumbers = response)
-    .subscribe(function(response){
-      this.trainNumbers = response
-    }.bind(this))
+    .subscribe((response)=> this.trainNumbers = response)
   }
-  trainCompositions(number, departureDate){
+  trainCompositions(number, departureDate, index){
     this.httpService.getCompositions(number, departureDate)
     .subscribe(function(response){
     this.compositionObj = response
-    console.log(this.compositionObj)
+    this.selected = index
+    console.log(index)
     }.bind(this))
   }
 }

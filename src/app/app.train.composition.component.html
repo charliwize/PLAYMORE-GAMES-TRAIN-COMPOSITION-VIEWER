@@ -9,7 +9,7 @@
             <div *ngFor="let journeySection of columns.journeySections">
                 <div class="col-md-6">
                     <div class="alert alert-warning">
-                        <div>Departure Time: {{journeySection.beginTimeTableRow.scheduledTime}}</div>
+                        <div>Departure Time: {{journeySection.beginTimeTableRow.scheduledTime | date: 'medium'}}</div>
                         <div>Transit Type: {{journeySection.beginTimeTableRow.type}}</div>
                         <div>Station UIC Code: {{journeySection.beginTimeTableRow.stationUICCode}}</div>
                         <div>Station ShortCode: {{journeySection.beginTimeTableRow.stationShortCode}}</div>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="alert alert-success">
-                        <div>Departure Time: {{journeySection.endTimeTableRow.scheduledTime}}</div>
+                        <div>Departure Time: {{journeySection.endTimeTableRow.scheduledTime | date: 'medium'}}</div>
                         <div>Transit Type: {{journeySection.endTimeTableRow.type}}</div>
                         <div>Station UIC Code: {{journeySection.endTimeTableRow.stationUICCode}}</div>
                         <div>Station ShortCode: {{journeySection.endTimeTableRow.stationShortCode}}</div>
