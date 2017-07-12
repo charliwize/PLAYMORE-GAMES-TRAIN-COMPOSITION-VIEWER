@@ -1,4 +1,20 @@
 <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-info">
+        <strong>Info! </strong>Select a train station from the drop down below to see deatails
+      </div>
+    </div>
+  </div>
+  <div class="row select">
+    <div class="col-md-8">
+      <select [(ngModel)]="selectedStation" class="form-control" (ngModelChange)="stationsTrain($event)">
+        <option [ngValue]="default" disabled>--Select a station--</option>
+        <option *ngFor="let station of stations let i = index" [ngValue]='station.stationShortCode'>{{station.stationName}} - {{station.stationShortCode}} </option>
+      </select>
+    </div>
+  </div>
+  
   <div class="panel panel-primary item">
     <div class="panel-heading"><h3>Train Composition Viewer</h3></div>
     <div class="row">

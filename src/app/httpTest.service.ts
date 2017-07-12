@@ -5,8 +5,14 @@ import "rxjs/add/operator/map";
 
 export class HTTPGetService {
     constructor(private _http: Http) {}
-    getTrainNumber () {
-        return this._http.get('https://rata.digitraffic.fi/api/v1/live-trains?station=SLO')
+    getStations (){
+        return this._http.get('https://rata.digitraffic.fi/api/v1/metadata/stations')
+        .map(function (response: Response) {
+            return response.json()
+        })
+    }
+    getTrainNumber (station) {
+        return this._http.get('https://rata.digitraffic.fi/api/v1/live-trains?station='+station)
         .map(function (response: Response) {
             return response.json()
         })

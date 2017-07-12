@@ -1,3 +1,9 @@
+.container {
+    margin: 10px auto
+}
+.select {
+    margin: 20px
+}
 .item {
     padding: 15px
 }
