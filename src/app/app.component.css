@@ -7,19 +7,41 @@
 .item {
     padding: 15px
 }
-.train-info{
+.train-info {
     background: rgba(34, 34, 34, 0.13);
-    margin: 10px;
+    margin:  10px 0 10px 0;
     cursor: pointer;
     opacity: 1.0;
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
+    display: inline-block;
+    width: 100%;
 }
-.train-info:hover{
+.train-details {
+    border-top: rgba(49, 112, 143, 0.37) 1px solid;
+    padding: 10px;
+    margin-top: 20px;
+}
+.train-info:hover {
     background: rgba(26, 125, 167, 0.3);
     opacity: 0.8;
 }
-.active{
+.active {
     background: rgba(26, 125, 167, 0.3);
+}
+.moving-train {
+    background: rgba(60, 118, 61, 0.97);
+    padding: 3px;
+    color: #fff;
+}
+.not-moving-train {
+    background: rgba(165, 42, 42, 0.81);
+    padding: 3px;
+    color: #fff;
+}
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    z-index: 2;
+    color: #fff;
+    background-color: #337ab7;
 }

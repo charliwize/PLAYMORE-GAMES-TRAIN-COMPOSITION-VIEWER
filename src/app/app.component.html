@@ -16,12 +16,26 @@
   
   <div class="panel panel-primary item">
     <div class="panel-heading"><h3>Train Composition Viewer</h3></div>
-    <div class="row">
+    <br/>
+    <div class="row" *ngIf="trainNumbers.length == 0">
+      <div class="col-md-12">
+        <div class="alert alert-danger">
+            No Train Details!
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="trainNumbers.length > 0">
       <div class="col-md-4" *ngFor="let trainNumber of trainNumbers;let i=index">
-        <div class="item train-info" [ngClass]="{ 'active': selected == i }" (click)="trainCompositions(trainNumber.trainNumber, trainNumber.departureDate, i)">
+        <div class="item train-info" [ngClass]="{ 'active': selected == i && checked }" (click)="trainCompositions(trainNumber.trainNumber, trainNumber.departureDate, i)">
         <!-- trainType + trainNumber    beginStation - endStation -->
-          <div>Train Type: {{trainNumber.trainType}}</div>
-          <div>Train Number: {{trainNumber.trainNumber}}</div>
+          <div class="pull-left">
+            <div>Train Type: {{trainNumber.trainType}}</div>
+            <div>Train Number: {{trainNumber.trainNumber}}</div>
+          </div>
+          <div class="pull-right">
+            <div class="moving-train" *ngIf="compositionObj.journeySections !== undefined && selected == i && checked">Going</div>
+            <div class="not-moving-train" *ngIf="compositionObj.journeySections == undefined && selected == i && checked">Not going</div>
+          </div>
         </div>
       </div>
     </div>

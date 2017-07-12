@@ -11,7 +11,7 @@ export class HTTPGetService {
             return response.json()
         })
     }
-    getTrainNumber (station) {
+    getTrainInfo (station) {
         return this._http.get('https://rata.digitraffic.fi/api/v1/live-trains?station='+station)
         .map(function (response: Response) {
             return response.json()

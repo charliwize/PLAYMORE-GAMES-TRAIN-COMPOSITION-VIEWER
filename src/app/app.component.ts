@@ -14,6 +14,7 @@ export class AppComponent{
   default = "";
   stations = []
   selectedStation = "";
+  checked = false
   constructor (private httpService: HTTPGetService){}
   ngOnInit() {
     this.httpService.getStations()
@@ -21,16 +22,19 @@ export class AppComponent{
   }
   
   stationsTrain(c) {
-    this.httpService.getTrainNumber(c)
+    this.httpService.getTrainInfo(c)
     .subscribe(function(response){
-      this.compositionObj = ""
+      this.compositionObj = {}
+      this.selected = ""
       this.trainNumbers = response
+      this.checked = false
     }.bind(this))
   }
  
   trainCompositions(number, departureDate, index){
     this.httpService.getCompositions(number, departureDate)
     .subscribe(function(response){
+    this.checked = true
     this.compositionObj = response
     this.selected = index
     }.bind(this))
