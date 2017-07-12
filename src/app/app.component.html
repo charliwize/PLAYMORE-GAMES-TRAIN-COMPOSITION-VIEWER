@@ -1,8 +1,14 @@
 <div class="container">
+  <h3>{{errorMsg}}</h3>
   <div class="row">
     <div class="col-md-12">
       <div class="alert alert-info">
-        <strong>Info! </strong> Select a train station from the drop down below to see deatails.</div>
+        <strong>Info! </strong> 
+        <ul>
+          <li>Select a train station from the drop down below to see details.</li>
+          <li>Click on the train and scroll down to view train Compositions</li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="row select">
@@ -33,8 +39,8 @@
             <div>Train Number: {{trainNumber.trainNumber}}</div>
           </div>
           <div class="pull-right">
-            <div class="moving-train" *ngIf="compositionObj.journeySections !== undefined && selected == i && checked">Going</div>
-            <div class="not-moving-train" *ngIf="compositionObj.journeySections == undefined && selected == i && checked">Not going</div>
+            <div class="moving-train" *ngIf="compositionObj.journeySections !== undefined && selected == i && checked">Moving</div>
+            <div class="not-moving-train" *ngIf="compositionObj.journeySections == undefined && selected == i && checked">Not Moving</div>
           </div>
         </div>
       </div>
@@ -42,3 +48,4 @@
   </div>
   <train-composition *ngIf="compositionObj !== undefined" [columns]="compositionObj"></train-composition>
 </div>
+<footer>footer - copyright 2001 - Charles Okojie</footer>

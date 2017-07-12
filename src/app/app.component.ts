@@ -15,10 +15,13 @@ export class AppComponent{
   stations = []
   selectedStation = "";
   checked = false
+  //err message 
+  errorMsg: string
   constructor (private httpService: HTTPGetService){}
   ngOnInit() {
     this.httpService.getStations()
-    .subscribe((response)=> this.stations = response)
+    .subscribe((response)=> this.stations = response, 
+    error => this.errorMsg = error)
   }
   
   stationsTrain(c) {
@@ -28,7 +31,8 @@ export class AppComponent{
       this.selected = ""
       this.trainNumbers = response
       this.checked = false
-    }.bind(this))
+    }.bind(this),
+      error => this.errorMsg = error)
   }
  
   trainCompositions(number, departureDate, index){
@@ -37,6 +41,7 @@ export class AppComponent{
     this.checked = true
     this.compositionObj = response
     this.selected = index
-    }.bind(this))
+  }.bind(this),
+    error => this.errorMsg = error)
   }
 }
