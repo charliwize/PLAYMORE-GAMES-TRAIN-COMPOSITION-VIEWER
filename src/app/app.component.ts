@@ -11,8 +11,9 @@ import { HTTPGetService } from './httpTest.service'
 export class AppComponent{
   trainNumbers = [];
   compositionObj = {};
+  default = "";
   stations = []
-  self = this;
+  selectedStation = "";
   constructor (private httpService: HTTPGetService){}
   ngOnInit() {
     this.httpService.getStations()
