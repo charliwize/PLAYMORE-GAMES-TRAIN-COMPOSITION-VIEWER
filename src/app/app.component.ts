@@ -8,7 +8,7 @@ import { HTTPGetService } from './httpTest.service'
   providers:[HTTPGetService]
 })
 
-export class AppComponent{
+export class AppComponent implements OnInit{
   trainNumbers = [];
   compositionObj = {};
   default = "";
